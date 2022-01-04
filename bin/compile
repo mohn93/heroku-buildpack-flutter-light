@@ -130,7 +130,7 @@ rm -rf $SOURCE_DIR/build
 # heroku-buildpac-static compatibility
 
 print "$(<$BUILD_DIR/static.json)"
-if [ ! -f $BUILD_DIR/static.json ]; then
+# if [ ! -f $BUILD_DIR/static.json ]; then
 #   echo "{
 #   "root": "dist/",
 #   "routes": {
@@ -145,7 +145,7 @@ if [ ! -f $BUILD_DIR/static.json ]; then
 #   "canonical_host": "www.quicklss.ly"
 # }
 # " > $BUILD_DIR/static.json
-fi
+# fi
 
 if [ "$FLUTTER_CLEANUP" == false ]; then
   print "Setting up the Dart & Flutter command line tools"

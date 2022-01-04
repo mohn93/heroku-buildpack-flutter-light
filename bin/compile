@@ -132,7 +132,6 @@ rm -rf $SOURCE_DIR/build
 
 if [ ! -f $BUILD_DIR/static.json ]; then
   echo "{
-  "root": "dist/",
   "routes": {
     "/profile/": {
       "url": "/",

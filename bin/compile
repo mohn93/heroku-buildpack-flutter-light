@@ -128,6 +128,8 @@ mv $SOURCE_DIR/build/web/* $DEPLOY_DIR
 rm -rf $SOURCE_DIR/build
 
 # heroku-buildpac-static compatibility
+
+print "$(<$BUILD_DIR/static.json)"
 if [ ! -f $BUILD_DIR/static.json ]; then
 #   echo "{
 #   "root": "dist/",

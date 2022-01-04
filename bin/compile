@@ -131,19 +131,11 @@ rm -rf $SOURCE_DIR/build
 
 
 if [ ! -f $BUILD_DIR/static.json ]; then
-  echo "{
-  "routes": {
-    "/profile/": {
-      "url": "/",
-      "status": 302
-    },
-    "/**":       "index.html"
-  },
-  "clean_urls": true,
-  "error_page": "404.html",
-  "canonical_host": "www.quicklss.ly"
-}
-" > $BUILD_DIR/static.json
+    print "no static.json file found, settings default one {}"
+    echo "{}" > $BUILD_DIR/static.json
+  else 
+    print "moving static.json to $BUILD_DIR"
+    mv $SOURCE_DIR/static.json $BUILD_DIR/static.json
 fi
 print "$(<$BUILD_DIR/static.json)"
 

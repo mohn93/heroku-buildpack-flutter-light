@@ -148,7 +148,7 @@ if [ ! -f $BUILD_DIR/static.json ]; then
 #     print "moving static.json to $BUILD_DIR"
 #     mv $SOURCE_DIR/static.json $BUILD_DIR/static.json
 fi
-print "static.json -> $(<$BUILD_DIR/static.json)"
+# print "static.json -> $(<$BUILD_DIR/static.json)"
 
 if [ "$FLUTTER_CLEANUP" == false ]; then
   print "Setting up the Dart & Flutter command line tools"

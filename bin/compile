@@ -101,13 +101,13 @@ PATH="$PATH":"$(pwd)/.flutter/bin/"
 # print "Compiling the project with $FLUTTER_BUILD"
 # eval $FLUTTER_BUILD | indent
 
-print "Compiling the project with 'flutter pub run build_runner build --delete-conflicting-outputs ; flutter build web --release --quiet --no-sound-null-safety'"
+print "Compiling the project with 'flutter pub run build_runner build --delete-conflicting-outputs ; flutter build web --release --quiet '"
 print "Ignoring build errors"
 func () {
   print "Running 'flutter pub run build_runner build --delete-conflicting-outputs'"
   flutter pub run build_runner build --delete-conflicting-outputs | indent
-  print "Running 'flutter build web --release --quiet --no-sound-null-safety'"
-  flutter build web --release --quiet --no-sound-null-safety | indent
+  print "Running 'flutter build web --release --quiet '"
+  flutter build web --release --quiet  | indent
   return 0
 }
 func

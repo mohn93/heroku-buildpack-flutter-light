@@ -101,17 +101,6 @@ fi
 print "Compiling the project with $FLUTTER_BUILD"
 eval $FLUTTER_BUILD | indent
 
-# print "Compiling the project with 'flutter pub run build_runner build --delete-conflicting-outputs ; flutter build web --release --quiet '"
-# print "Ignoring build errors"
-func () {
-  print "Running 'flutter pub run build_runner build --delete-conflicting-outputs'"
-  flutter pub run build_runner build --delete-conflicting-outputs | indent
-  print "Running 'flutter build web --release --quiet '"
-  flutter build web --release --quiet  | indent
-  return 0
-}
-# func
-
 # Saving SDK in Cache
 if [ -x .flutter/bin/flutter ]; then
   print "Saving Flutter SDK in Cache"
@@ -129,7 +118,7 @@ if [ "$FLUTTER_CLEANUP" != false ]; then
 
   mkdir -p $SOURCE_DIR/TO_DELETE
 
-  mv !("TO_DELETE"|"build"|"static.json"|"Procfile"|"config") TO_DELETE
+  mv !("TO_DELETE"|"build"|"Procfile"|"config") TO_DELETE
   rm -rf TO_DELETE
 fi
 
@@ -138,17 +127,6 @@ mkdir -p $DEPLOY_DIR
 mv $SOURCE_DIR/build/web/* $DEPLOY_DIR
 rm -rf $SOURCE_DIR/build
 
-# heroku-buildpac-static compatibility
-
-
-if [ ! -f $BUILD_DIR/static.json ]; then
-    print "no static.json file found, settings default one {}"
-    echo "{}" > $BUILD_DIR/static.json
-#   else 
-#     print "moving static.json to $BUILD_DIR"
-#     mv $SOURCE_DIR/static.json $BUILD_DIR/static.json
-fi
-# print "static.json -> $(<$BUILD_DIR/static.json)"
 
 if [ "$FLUTTER_CLEANUP" == false ]; then
   print "Setting up the Dart & Flutter command line tools"

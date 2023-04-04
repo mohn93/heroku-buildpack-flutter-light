@@ -94,15 +94,15 @@ print "Getting packages from Flutter project"
 
 PATH="$PATH":"$(pwd)/.flutter/bin/"
 
-# if [ -z "$FLUTTER_BUILD" ]; then
-#   FLUTTER_BUILD="flutter build web --release --quiet"
-# fi
+if [ -z "$FLUTTER_BUILD" ]; then
+  FLUTTER_BUILD="flutter build web --release --quiet"
+fi
 
-# print "Compiling the project with $FLUTTER_BUILD"
-# eval $FLUTTER_BUILD | indent
+print "Compiling the project with $FLUTTER_BUILD"
+eval $FLUTTER_BUILD | indent
 
-print "Compiling the project with 'flutter pub run build_runner build --delete-conflicting-outputs ; flutter build web --release --quiet '"
-print "Ignoring build errors"
+# print "Compiling the project with 'flutter pub run build_runner build --delete-conflicting-outputs ; flutter build web --release --quiet '"
+# print "Ignoring build errors"
 func () {
   print "Running 'flutter pub run build_runner build --delete-conflicting-outputs'"
   flutter pub run build_runner build --delete-conflicting-outputs | indent
@@ -110,7 +110,7 @@ func () {
   flutter build web --release --quiet  | indent
   return 0
 }
-func
+# func
 
 # Saving SDK in Cache
 if [ -x .flutter/bin/flutter ]; then
